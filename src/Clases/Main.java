@@ -249,7 +249,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
         for (int i = 0; i < lista.length; i++) {
 
-            lista[i].setBounds(50, y, 85, 30); //ubicación
+            lista[i].setBounds(50, y, 85, 30); //Location
             lista[i].setFocusable(false); //Does not focus when pressing the button
             lista[i].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea negra
             lista[i].setBackground(Color.white); //White color for button
