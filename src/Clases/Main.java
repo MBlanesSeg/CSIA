@@ -28,22 +28,22 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
     operaciones numeros = new operaciones();
 
 
-    JLabel fondo, puntaje, pregunta, multiplo, tempo, plus, acertado, game_over, manzana, label1, label2; //fondo= imagen de paisaje / puntaje= texto que da el puntaje / pregunta= texto que da la pregunta
-    JTextField respuesta; //caja de texto para ingresar la respuesta
-    JButton por1, por2, por3, por4, por5, por6, por7, por8, por9, por10, por11, por12; //botones de cada operacion
-    JButton abrir, cerrar, iniciar;  //con abrir abro el menú de ooperaciones y con el boton cerrar se cierra dicho menú.
+    JLabel fondo, puntaje, pregunta, multiplo, tempo, plus, acertado, game_over, manzana, label1, label2; //fondo= image of the scenery / puntaje= text that gives the points / pregunta= text that gives the question
+    JTextField respuesta; //text box to input user answer
+    JButton por1, por2, por3, por4, por5, por6, por7, por8, por9, por10, por11, por12; //buttons for each multiple table
+    JButton abrir, cerrar, iniciar;  //abrir = open the side menu & cerrar = close the side menu
     JPanel panel_fondo, panel_puntaje, panel_pregunta, panel_operaciones, gameOver, panel1, panel2;
 
 
-    int puntuacion = 0; //variable para llevar el conteo de la puntuación.
+    int puntuacion = 0; //variable to count the score of the user.
     int operacion = 1;
     int numero_aleatorio = 0;
     int contador = 10;
     boolean estado = true;
     boolean estado_acertado = true;
     int mayor_puntaje = 0;
-    int puntajes[] = new int[1000]; //en este array se guardan los puntajes
-    int i=0; //con esta i vamos a recorrer cada celda del array
+    int puntajes[] = new int[1000]; //Array to store the scores
+    int i=0; //With the i we go through each array cell
 
     Color colores[] = {new Color(0, 150, 0), new Color(255, 200, 0), new Color(255, 0, 0)};
 
@@ -52,14 +52,14 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
 
     public interfaz() {
-        super("Multiplicación App"); //titulo a la ventana.
-        getContentPane().setBackground(Color.white); //Color  blanco al fondo( contenedor)
-        setSize(1100, 650); //tamaño de la ventana
-        setLocationRelativeTo(null); //Cuando inicie la App aparecerá en el centro del monitor
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //cuando le doy click a la "x" de la ventaja se deja de ejecutar la App.
-        setLayout(null); //No le establezco un Layout o diseño especifico sino que lo dejo libre.
-        setResizable(false); //NO se puede modificar las dimensiones de la ventana.
-        componentes_graficos(); //llamo al método que se encarga de crear cada componente gráfico.
+        super("Multiplicación App"); //title of the window.
+        getContentPane().setBackground(Color.white); //White background(container)
+        setSize(1100, 650); //size of the window
+        setLocationRelativeTo(null); //Initializing the program will make it appear in the middle
+        setDefaultCloseOperation(EXIT_ON_CLOSE); //Clicking "x" will close the program.
+        setLayout(null); //No specific layout, rather, its a free layout.
+        setResizable(false); //Dimensions of the window aren't resize-able.
+        componentes_graficos(); //Calling the method that handles the graphic components
         panel_operaciones.setVisible(false);
         temporizador.stop();
         duracion_plus.stop();
@@ -67,47 +67,47 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
         tempo.setForeground(colores[0]);
 
 
-        setVisible(true); //Hago que sea visible la ventana.
+        setVisible(true); //Making the window visible.
 
 
     }//constructor
 
     private void componentes_graficos() {
-        /*  Componentes para el panel*/
+        /*  Components for the panel*/
         panel_fondo = new JPanel();
         panel_fondo.setLayout(null);
-        panel_fondo.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
+        panel_fondo.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
         panel_fondo.setBounds(0, 0, getWidth() - 8, getHeight() - 30);
         panel_fondo.setBackground(Color.white);
 
         panel_puntaje = new JPanel();
-        panel_puntaje.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
+        panel_puntaje.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
         panel_puntaje.setBounds(10,10,180,45);
         panel_puntaje.setBackground(Color.white);
         panel_puntaje.setLayout(null);
 
         panel_pregunta = new JPanel();
-        panel_pregunta.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
+        panel_pregunta.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
         panel_pregunta.setBounds(360,200, 220, 35);
         panel_pregunta.setBackground(Color.white);
         panel_pregunta.setLayout(null);
 
         panel_operaciones = new JPanel();
-        panel_operaciones.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
+        panel_operaciones.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
         panel_operaciones.setBounds(15,10,150,600);
         panel_operaciones.setBackground(Color.white);
         panel_operaciones.setLayout(null);
 
         gameOver = new JPanel();
-        gameOver.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
+        gameOver.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
         gameOver.setBounds(20, 20, 900, 450);
         gameOver.setBackground(new Color(244, 240, 190));
         gameOver.setLayout(null);
         gameOver.setVisible(true);
 
         panel1 = new JPanel();
-        panel1.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
-        panel1.setBounds(320, 210, 230, 45); //ubicación
+        panel1.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
+        panel1.setBounds(320, 210, 230, 45); //location
         panel1.setBackground(new Color(219, 148, 67));
         panel1.setLayout(null);
         gameOver.add(panel1);
@@ -122,8 +122,8 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
 
         panel2 = new JPanel();
-        panel2.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea color negro
-        panel2.setBounds(320, 150, 230, 45); //ubicación
+        panel2.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
+        panel2.setBounds(320, 150, 230, 45); //location
         panel2.setBackground(new Color(219, 148, 67));
         panel2.setLayout(null);
         gameOver.add(panel2);
@@ -139,7 +139,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
 
 
-        /*Componentes para las etiquetas*/
+        /*Componentes para las tags*/
         ImageIcon paisaje = new ImageIcon(getClass().getResource("/Imagenes/paisaje.jpg"));
         fondo = new JLabel();
         fondo.setBounds(80,35, 950,550);
@@ -215,7 +215,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
         manzana.setIcon(new ImageIcon(fruta.getImage().getScaledInstance(manzana.getWidth(), manzana.getHeight(), Image.SCALE_SMOOTH)));
         gameOver.add(manzana);
 
-        /*Componentes para las cajas de texto*/
+        /*Text Box Components*/
         respuesta = new JTextField();
         respuesta.setText("=");
         respuesta.setBounds(700, 480, 220, 30);
@@ -225,7 +225,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
         respuesta.addKeyListener(this);
 
 
-        /*Componentes para los botones*/
+        /*Button components*/
 
         por1 = new JButton("x 1");
         por2 = new JButton("x 2");
@@ -250,15 +250,15 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
         for (int i = 0; i < lista.length; i++) {
 
             lista[i].setBounds(50, y, 85, 30); //ubicación
-            lista[i].setFocusable(false); //que no se en marque al presionar el boton
+            lista[i].setFocusable(false); //Does not focus when pressing the button
             lista[i].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea negra
-            lista[i].setBackground(Color.white); //color del boton blanco
-            lista[i].addActionListener(this); //activamos  los eventos para que los botones hagan alguna funcion.
+            lista[i].setBackground(Color.white); //White color for button
+            lista[i].addActionListener(this); //activating events so that the button functions.
 
-            panel_operaciones.add(lista[i]); //añadimos cada boton al panel de operaciones.
-            y += 45; //incrementamos la seperacion que hay entre un boton y otro
+            panel_operaciones.add(lista[i]); //adding each button to the side menu.
+            y += 45; //Increasing separation between buttons
 
-        } //fin ciclo for
+        } //Ending for cycle or loop
 
 
         ImageIcon menu = new ImageIcon(getClass().getResource("/Imagenes/menu.png"));
@@ -280,10 +280,10 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
 
         iniciar = new JButton("JUGAR OTRA VEZ?");
-        iniciar.setBounds(320, 300, 230, 45); //ubicación
-        iniciar.setFocusable(false); //que no se en marque al presionar el boton
-        iniciar.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //borde de linea negra
-        iniciar.setBackground(Color.white); //color del boton blanco
+        iniciar.setBounds(320, 300, 230, 45); //location
+        iniciar.setFocusable(false); //No focus when pressing the button
+        iniciar.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0))); //border of the panel is black
+        iniciar.setBackground(Color.white); //White color button
         iniciar.setFont(new Font("Arial", Font.BOLD, 18));
         iniciar.addActionListener(this);
         gameOver.add(iniciar);
@@ -292,7 +292,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
 
 
-        /*Añadiendo todo a la ventaja*/
+        /*Adding everything to the window*/
         gameOver.add(game_over);
         fondo.add(gameOver);
         panel_pregunta.add(pregunta);
@@ -314,7 +314,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
         add(panel_fondo);
 
 
-    }//componentes_graficos
+    }//Graphic Components
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -417,7 +417,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
                 contador = 0;
                 temporizador.stop();
                 i=0;
-                //revisamos el numero mayor que se guardo en el array
+                //Revising the largest number in the array
                 for(int j=0;j<puntuacion;j++){
 
                     if(mayor_puntaje<puntajes[j]){
@@ -435,7 +435,7 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
 
             }
 
-        }//temporziador
+        }//Timer
 
         if (e.getSource() == duracion_plus) {
             if (estado_acertado == true) {
@@ -466,9 +466,9 @@ class interfaz extends JFrame implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent tecla) {
         if (tecla.getSource() == respuesta && tecla.getKeyChar() == KeyEvent.VK_ENTER) {
-            String cadena = respuesta.getText(); //leo toda la caja de texto
-            cadena = cadena.substring(2, cadena.length()); //como hay un = y espacio antes del numero, lo que hago es extraer solo el numero
-            int numero = Integer.parseInt(cadena);//ese numero que esta como texto o cadena lo convierto a numero entero
+            String cadena = respuesta.getText(); //Reading all of the text box
+            cadena = cadena.substring(2, cadena.length()); //Since there is a = y and space before the number, we only extract the number
+            int numero = Integer.parseInt(cadena);//Number as chain or text becomes a whole number
 
             int respuesta_operacion = operacion * numero_aleatorio;
 
